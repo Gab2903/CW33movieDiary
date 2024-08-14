@@ -31,46 +31,56 @@
   </head>
   <body>
     <header
-    class="flex flex-wrap justify-between align-center py-8 pl-16 pr-32 bg-darkgrey border-gray-300 border-b"
-  >
-    <!-- container for logo and name -->
-    <div class="flex items-center gap-11">
-      <!-- logo -->
-      <figure class="w-12 h-12">
-        <img class="w-full h-full" src="img/logo.png" alt="logo" />
-      </figure>
-      <!-- name -->
-      <span class="font-dmsans font-medium text-4xl text-white">MOVIES</span>
-    </div>
+      class="flex flex-wrap justify-between align-center py-8 pl-16 pr-32 bg-darkgrey border-gray-300 border-b"
+    >
+      <!-- container for logo and name -->
+      <div class="flex items-center gap-11">
+        <!-- logo -->
+        <figure class="w-12 h-12">
+          <img class="w-full h-full" src="img/logo.png" alt="logo" />
+        </figure>
+        <!-- name -->
+        <span class="font-dmsans font-medium text-4xl text-white">MOVIES</span>
+      </div>
 
-    <!-- navigation -->
-    <nav class="flex items-center gap-20">
-      <a
-        href="index.html"
-        class="font-dmsans font-medium text-3xl text-hellgrey hover:text-gray-300"
-        >Home</a
-      >
-      <a
-        a
-        href="journal.html"
-        class="font-dmsans font-medium text-3xl text-hellgrey hover:text-gray-300"
-        >Favorites</a
-      >
-    </nav>
+      <!-- navigation -->
+      <nav class="flex items-center gap-20">
+        <a
+          href="index.html"
+          class="font-dmsans font-medium text-3xl text-hellgrey hover:text-gray-300"
+          >Home</a
+        >
+        <a
+          a
+          href="journal.html"
+          class="font-dmsans font-medium text-3xl text-hellgrey hover:text-gray-300"
+          >Favorites</a
+        >
+      </nav>
 
-    <!-- search -->
-    <div class="w-1/3 min-w-72 h-11 relative">
-      <input
-        class="w-full h-full pl-10 rounded-3xl bg-black border-gray-300 border-2 text-gray-300 text-xl focus:outline-none"
-        type="text"
-        placeholder="search"
-      />
-      <!-- search icon -->
-      <figure class="w-8 h-8 absolute right-8 top-1/2 -translate-y-1/2">
-        <img class="w-full h-full" src="img/search.png" alt="search icon" />
-      </figure>
-    </div>
-  </header>
+      <!-- search section -->
+      <div class="search-container relative z-50 w-1/3 min-w-72 h-11">
+        <!-- search input -->
+        <input
+          class="search-input absolute w-full h-11 pl-10 pr-16 bg-black border-gray-300 border-2 rounded-3xl text-gray-300 text-xl focus:outline-none"
+          type="text"
+          placeholder="search"
+        />
+        <!-- search icon -->
+        <figure class="w-8 h-8 absolute right-8 top-1/2 -translate-y-1/2">
+          <img class="w-full h-full" src="img/search.png" alt="search icon" />
+        </figure>
+        <!-- results container -->
+        <div
+          class="search-results absolute top-11 w-full max-h-96 overflow-auto mt-4 p-8 bg-darkgrey rounded-3xl border-gray-300 border-2 hidden"
+        >
+          <ul class="search-results-list flex flex-col gap-5">
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <!-- cards of movies -->
   <div class="bg-[#313d5a] text-white pt-8 pb-8">
     <div class="container mx-auto p-4">
       <div
@@ -96,6 +106,6 @@
       </div>
     </div>
   </div>
-  <script src="journal.js"></script>
+  <script src="journal.js" type="module"></script>
   </body>
 </html>
