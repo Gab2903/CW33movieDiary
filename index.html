@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Movie Diary Home</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
@@ -17,12 +16,11 @@
             colors: {
               darkgrey: "#242D42",
               hellgrey: "#B1B1B1",
+              middleblau: "#303d5a",
             },
-            backgroundImage: {},
             fontFamily: {
               dmsans: ["DM Sans", "sans-serif"],
             },
-            height: {},
           },
         },
       };
@@ -46,13 +44,13 @@
       <nav class="flex items-center gap-20">
         <a
           href="index.html"
-          class="font-dmsans font-medium text-3xl text-hellgrey hover:text-gray-300"
+          class="font-dmsans font-medium text-3xl text-hellgrey hover:text-slate-50"
           >Home</a
         >
         <a
           a
           href="journal.html"
-          class="font-dmsans font-medium text-3xl text-hellgrey hover:text-gray-300"
+          class="font-dmsans font-medium text-3xl text-hellgrey hover:text-slate-50"
           >Favorites</a
         >
       </nav>
@@ -71,9 +69,9 @@
         </figure>
         <!-- results container -->
         <div
-          class="search-results absolute top-11 w-full max-h-96 overflow-auto mt-4 p-8 bg-darkgrey rounded-3xl border-gray-300 border-2 hidden"
+          class="search-panel absolute top-11 w-full max-h-96 overflow-auto mt-4 p-8 bg-darkgrey rounded-3xl border-gray-300 border-2 hidden"
         >
-          <ul class="search-results-list flex flex-col gap-5">
+          <ul class="search-panel__list flex flex-col gap-5">
           </ul>
         </div>
       </div>

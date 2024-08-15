@@ -22,6 +22,10 @@
             fontFamily: {
               dmsans: ["DM Sans", "sans-serif"],
             },
+             backgroundImage: {
+              delete: "url('img/delete.png')",
+              deleteHover: "url('img/delete_hover.png')"
+            }
           },
         },
       };
@@ -48,13 +52,13 @@
         <nav class="flex items-center gap-20">
           <a
             href="index.html"
-            class="font-dmsans font-medium text-3xl text-hellgrey hover:text-gray-300"
+            class="font-dmsans font-medium text-3xl text-hellgrey hover:text-slate-50"
             >Home</a
           >
           <a
             a
             href="journal.html"
-            class="font-dmsans font-medium text-3xl text-hellgrey hover:text-gray-300"
+            class="font-dmsans font-medium text-3xl text-hellgrey hover:text-slate-50"
             >Favorites</a
           >
         </nav>
@@ -73,46 +77,18 @@
           </figure>
           <!-- results container -->
           <div
-            class="search-results absolute top-11 w-full max-h-96 overflow-auto mt-4 p-8 bg-darkgrey rounded-3xl border-gray-300 border-2 hidden"
+            class="search-panel absolute top-11 w-full max-h-96 overflow-auto mt-4 p-8 bg-darkgrey rounded-3xl border-gray-300 border-2 hidden"
           >
-            <ul class="search-results-list flex flex-col gap-5"></ul>
+            <ul class="search-panel__list flex flex-col gap-5"></ul>
           </div>
         </div>
       </header>
 
-      <!-- favorite films -->
+      <!-- favorite movies -->
       <main
-        class="favorite-container flex flex-col gap-8 grow pt-12 px-12 bg-middleblau"
-      >
-        <!-- one film -->
-        <div class="flex h-64 bg-darkgrey rounded-lg p-12">
-          <!-- image of movie -->
-          <figure class="h-full w-auto flex-shrink-0">
-            <img
-              class="object-cover h-full"
-              src="https://image.tmdb.org/t/p/w500/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg"
-              alt=""
-            />
-          </figure>
-          <!-- information about film -->
-          <div class="flex flex-col gap-2 px-12 overflow-hidden">
-            <!-- title -->
-            <h2 class="text-2xl text-white">Deadpool & Wolverine</h2>
-            <!-- description -->
-            <p class="text-base text-white">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Laudantium, dignissimos nesciunt? Mollitia labore voluptatibus
-              omnis inventore, dolore debitis magni nisi pariatur similique
-              odit, iure provident sunt quos qui. Illum quo quidem ad ut! Dolore
-              aliquid quibusdam reprehenderit quia voluptatem commodi eveniet
-              alias provident ut quae facilis doloremque earum, nemo velit sequi
-              praesentium. A consequatur commodi voluptates.
-            </p>
-          </div>
-        </div>
-      </main>
+        class="favorites grid grid-cols-2 gap-8 grow pt-12 px-12 bg-middleblau"
+      ></main>
     </div>
-
     <script src="journal.js" type="module"></script>
   </body>
 </html>
