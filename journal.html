@@ -17,95 +17,102 @@
             colors: {
               darkgrey: "#242D42",
               hellgrey: "#B1B1B1",
+              middleblau: "#303d5a",
             },
-            backgroundImage: {},
             fontFamily: {
               dmsans: ["DM Sans", "sans-serif"],
             },
-            height: {},
           },
         },
       };
     </script>
   </head>
-  </head>
   <body>
-    <header
-      class="flex flex-wrap justify-between align-center py-8 pl-16 pr-32 bg-darkgrey border-gray-300 border-b"
-    >
-      <!-- container for logo and name -->
-      <div class="flex items-center gap-11">
-        <!-- logo -->
-        <figure class="w-12 h-12">
-          <img class="w-full h-full" src="img/logo.png" alt="logo" />
-        </figure>
-        <!-- name -->
-        <span class="font-dmsans font-medium text-4xl text-white">MOVIES</span>
-      </div>
-
-      <!-- navigation -->
-      <nav class="flex items-center gap-20">
-        <a
-          href="index.html"
-          class="font-dmsans font-medium text-3xl text-hellgrey hover:text-gray-300"
-          >Home</a
-        >
-        <a
-          a
-          href="journal.html"
-          class="font-dmsans font-medium text-3xl text-hellgrey hover:text-gray-300"
-          >Favorites</a
-        >
-      </nav>
-
-      <!-- search section -->
-      <div class="search-container relative z-50 w-1/3 min-w-72 h-11">
-        <!-- search input -->
-        <input
-          class="search-input absolute w-full h-11 pl-10 pr-16 bg-black border-gray-300 border-2 rounded-3xl text-gray-300 text-xl focus:outline-none"
-          type="text"
-          placeholder="search"
-        />
-        <!-- search icon -->
-        <figure class="w-8 h-8 absolute right-8 top-1/2 -translate-y-1/2">
-          <img class="w-full h-full" src="img/search.png" alt="search icon" />
-        </figure>
-        <!-- results container -->
-        <div
-          class="search-results absolute top-11 w-full max-h-96 overflow-auto mt-4 p-8 bg-darkgrey rounded-3xl border-gray-300 border-2 hidden"
-        >
-          <ul class="search-results-list flex flex-col gap-5">
-          </ul>
-        </div>
-      </div>
-    </header>
-
-    <!-- cards of movies -->
-  <div class="bg-[#313d5a] text-white pt-8 pb-8">
-    <div class="container mx-auto p-4">
-      <div
-        class="flex grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-x-20 gap-y-12"
-        id="movies"
+    <div class="min-h-screen flex flex-col">
+      <header
+        class="flex flex-wrap justify-between align-center py-8 pl-16 pr-32 bg-darkgrey border-gray-300 border-b"
       >
-        <!-- <div class="w-72 bg-white text-black rounded-lg overflow-hidden">
-                <img
-                  class="w-full"
-                  src="https://image.tmdb.org/t/p/w300${film.poster_path}"
-                  alt="Movie Poster"
-                />
-                <div class="py-2 px-3">
-                    <p>Release</p>
-                  <h2 class="font-bold my-2">Movie Title</h2>
-                  <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae
-                    nisi magni quis alias cumque beatae dolore similique deserunt at
-                    porro, doloremque consectetur ipsam laborum libero.
-                  </p>
-                </div>
-              </div> -->
-      </div>
+        <!-- container for logo and name -->
+        <div class="flex items-center gap-11">
+          <!-- logo -->
+          <figure class="w-12 h-12">
+            <img class="w-full h-full" src="img/logo.png" alt="logo" />
+          </figure>
+          <!-- name -->
+          <span class="font-dmsans font-medium text-4xl text-white"
+            >MOVIES</span
+          >
+        </div>
+
+        <!-- navigation -->
+        <nav class="flex items-center gap-20">
+          <a
+            href="index.html"
+            class="font-dmsans font-medium text-3xl text-hellgrey hover:text-gray-300"
+            >Home</a
+          >
+          <a
+            a
+            href="journal.html"
+            class="font-dmsans font-medium text-3xl text-hellgrey hover:text-gray-300"
+            >Favorites</a
+          >
+        </nav>
+
+        <!-- search section -->
+        <div class="search-container relative z-50 w-1/3 min-w-72 h-11">
+          <!-- search input -->
+          <input
+            class="search-input absolute w-full h-11 pl-10 pr-16 bg-black border-gray-300 border-2 rounded-3xl text-gray-300 text-xl focus:outline-none"
+            type="text"
+            placeholder="search"
+          />
+          <!-- search icon -->
+          <figure class="w-8 h-8 absolute right-8 top-1/2 -translate-y-1/2">
+            <img class="w-full h-full" src="img/search.png" alt="search icon" />
+          </figure>
+          <!-- results container -->
+          <div
+            class="search-results absolute top-11 w-full max-h-96 overflow-auto mt-4 p-8 bg-darkgrey rounded-3xl border-gray-300 border-2 hidden"
+          >
+            <ul class="search-results-list flex flex-col gap-5"></ul>
+          </div>
+        </div>
+      </header>
+
+      <!-- favorite films -->
+      <main
+        class="favorite-container flex flex-col gap-8 grow pt-12 px-12 bg-middleblau"
+      >
+        <!-- one film -->
+        <div class="flex h-64 bg-darkgrey rounded-lg p-12">
+          <!-- image of movie -->
+          <figure class="h-full w-auto flex-shrink-0">
+            <img
+              class="object-cover h-full"
+              src="https://image.tmdb.org/t/p/w500/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg"
+              alt=""
+            />
+          </figure>
+          <!-- information about film -->
+          <div class="flex flex-col gap-2 px-12 overflow-hidden">
+            <!-- title -->
+            <h2 class="text-2xl text-white">Deadpool & Wolverine</h2>
+            <!-- description -->
+            <p class="text-base text-white">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Laudantium, dignissimos nesciunt? Mollitia labore voluptatibus
+              omnis inventore, dolore debitis magni nisi pariatur similique
+              odit, iure provident sunt quos qui. Illum quo quidem ad ut! Dolore
+              aliquid quibusdam reprehenderit quia voluptatem commodi eveniet
+              alias provident ut quae facilis doloremque earum, nemo velit sequi
+              praesentium. A consequatur commodi voluptates.
+            </p>
+          </div>
+        </div>
+      </main>
     </div>
-  </div>
-  <script src="journal.js" type="module"></script>
+
+    <script src="journal.js" type="module"></script>
   </body>
 </html>

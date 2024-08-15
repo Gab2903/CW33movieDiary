@@ -1,4 +1,4 @@
-import { fetchSearchedMovies } from "./search.js";
+import { fetchSearchedMovies } from "./modules/search.js";
 
 const options = {
   method: "GET",
