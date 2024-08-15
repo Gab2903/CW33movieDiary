@@ -7,11 +7,11 @@ const fetchSearchedMovies = async (options, query) => {
       `https://api.themoviedb.org/3/search/movie?query=${query}`,
       options
     );
-    if (!response.ok) console.error("Error fetching products", error);
+    if (!response.ok) throw Error("Error fetching products");
     const movies = await response.json();
     if (movies.results) {
       renderSearchedMovies(movies.results);
-    } 
+    }
   } catch (error) {
     console.error("Error fetching products", error);
   }
@@ -21,7 +21,9 @@ const renderSearchedMovies = function (movies) {
   searchResultsList.innerHTML = "";
 
   movies.forEach((movie) => {
-    const src = movie.poster_path ? `https://image.tmdb.org/t/p/w300${movie.poster_path}` : '';
+    const src = movie.poster_path
+      ? `https://image.tmdb.org/t/p/w300${movie.poster_path}`
+      : "";
 
     const template = `
       <li class="flex gap-10">
