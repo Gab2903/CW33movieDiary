@@ -1,4 +1,4 @@
-import { fetchSearchedMovies } from "./search.js";
+import { fetchSearchedMovies } from "./modules/search.js";
 
 const options = {
   method: "GET",
@@ -57,24 +57,25 @@ getMovies();
 // search
 const searchContainer = document.querySelector(".search-container");
 const searchInput = document.querySelector(".search-input");
-const searchResults = document.querySelector(".search-results");
+const searchPanel = document.querySelector(".search-panel");
 
 document.addEventListener("click", (event) => {
   if (!searchContainer.contains(event.target)) {
     searchInput.value = "";
-    searchResults.style.display = "none";
+    searchPanel.style.display = "none";
   }
 });
 
 searchInput.addEventListener("input", function (event) {
   if (searchInput.value) {
     fetchSearchedMovies(options, searchInput.value);
-    searchResults.style.display = "block";
+    searchPanel.style.display = "block";
   } else {
-    searchResults.style.display = "none";
+    searchPanel.style.display = "none";
   }
 });
 
+// bookmark
 movieEl.addEventListener("click", (event) => {
   const target = event.target.closest("button");
   if (!target) return;
