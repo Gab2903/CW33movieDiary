@@ -30,9 +30,11 @@ const renderSearchedMovies = function (movies) {
   searchPanelList.innerHTML = "";
 
   movies.forEach((movie) => {
-    const src = movie.poster_path
-      ? `https://image.tmdb.org/t/p/w300${movie.poster_path}`
-      : "";
+    if (!movie.poster_path) {
+      return false;
+    }
+
+    const src = `https://image.tmdb.org/t/p/w300${movie.poster_path}`;
 
     const template = `
       <li class="flex gap-10">
