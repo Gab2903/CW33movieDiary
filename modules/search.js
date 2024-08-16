@@ -38,6 +38,7 @@ const renderSearchedMovies = function (movies) {
 
     const template = `
       <li class="flex gap-10">
+<a href="index.html?id=${movie.id}">
         <figure class="flex-none w-4/12 h-auto">
           <img
             class="w-auto h-auto"
@@ -49,6 +50,7 @@ const renderSearchedMovies = function (movies) {
               <h2 class="text-white text-base">${movie.title}</h2>
               <span class="text-white text-sm">${movie.release_date}</span>
           </div>
+          </a>
       </li>`;
 
     searchPanelList.innerHTML += template;

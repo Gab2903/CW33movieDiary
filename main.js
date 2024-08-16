@@ -12,15 +12,22 @@ const options = {
 const movieEl = document.getElementById("movies");
 
 const renderMovies = (movies) => {
+  const storedItems = JSON.parse(localStorage.getItem("id")) || [];
   movies.forEach((element) => {
     const html = `
-       <div class="card relative flex flex-col bg-[#242d42] text-white rounded-lg overflow-hidden md:shadow-lg shadow-2xl hover:bg-[#374151]">
-       <button id=${element.id} class="absolute top-0 right-2 z-10">
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 16 16">
-	<path fill="currentColor" d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z" />
+       <div class="card group relative flex flex-col bg-[#242d42] text-white rounded-lg overflow-hidden md:shadow-lg shadow-2xl hover:bg-[#374151]">
+       <button id=${
+         element.id
+       } class="absolute top-0 right-1 z-10 text-neutral-400/55 ${
+      storedItems.includes(element.id.toString()) ? "text-red-500/80" : ""
+    }">
+<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 16 16">
+	<path fill="currentColor" d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2" />
 </svg>
 </button>
-        <img class="w-full hover:grayscale" src="https://image.tmdb.org/t/p/w500${element.poster_path}" alt="${element.title}">
+        <img class="w-full group-hover:grayscale" src="https://image.tmdb.org/t/p/w500${
+          element.poster_path
+        }" alt="${element.title}">
         <div class="py-2 px-3">
           <p class="text-xs">${element.release_date}</p>
           <h2 class="text-base my-2">${element.title}</h2>
@@ -80,7 +87,7 @@ movieEl.addEventListener("click", (event) => {
   const target = event.target.closest("button");
   if (!target) return;
   const targetID = target.id;
-
+  //Add movie by id to localStorage
   const storedItems = JSON.parse(localStorage.getItem("id")) || [];
   const filteredItems = storedItems.filter((id) => id !== targetID);
   if (storedItems.length === filteredItems.length) {
@@ -89,5 +96,11 @@ movieEl.addEventListener("click", (event) => {
   } else {
     localStorage.setItem("id", JSON.stringify(filteredItems));
   }
-  target.classList.toggle("text-red-500");
+  target.classList.toggle("text-red-500/80"); //toggle is like click/undo function
 });
+
+// if (localStorage.setItem("id", JSON.stringify(storedItems))); {addmovieEl
+// } else {
+// }
+
+//localStorage.setItem("id", JSON.stringify(storedItems) => {addElement${element.id}
