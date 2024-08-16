@@ -37,20 +37,22 @@ const renderSearchedMovies = function (movies) {
     const src = `https://image.tmdb.org/t/p/w300${movie.poster_path}`;
 
     const template = `
-      <li class="flex gap-10">
-<a href="index.html?id=${movie.id}">
-        <figure class="flex-none w-4/12 h-auto">
-          <img
-            class="w-auto h-auto"
-            src="${src}"
-            alt="image of movie"
-          />
-        </figure>
-          <div class="flex flex-col gap-3">
+      <li>
+        <a href="index.html?id=${movie.id}">
+          <div class="flex gap-10">
+            <figure class="flex-none w-4/12 h-auto">
+              <img
+                class="w-auto h-auto"
+                src="${src}"
+                alt="image of movie"
+              />
+            </figure>
+            <div class="flex flex-col gap-3">
               <h2 class="text-white text-base">${movie.title}</h2>
               <span class="text-white text-sm">${movie.release_date}</span>
+            </div>
           </div>
-          </a>
+        </a>
       </li>`;
 
     searchPanelList.innerHTML += template;
