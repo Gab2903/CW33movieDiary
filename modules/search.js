@@ -1,5 +1,5 @@
-const searchResultsList = document.querySelector(".search-results-list");
-const searchResults = document.querySelector(".search-results");
+const searchPanelList = document.querySelector(".search-panel__list");
+const searchPanel = document.querySelector(".search-panel");
 
 const fetchSearchedMovies = async (options, query) => {
   try {
@@ -18,12 +18,23 @@ const fetchSearchedMovies = async (options, query) => {
 };
 
 const renderSearchedMovies = function (movies) {
-  searchResultsList.innerHTML = "";
+  if (movies.length == 0) {
+    searchPanelList.innerHTML = `
+        <li>
+          <span class="text-white text-sm"> No results ... </span>
+        </li>
+      `;
+    return;
+  }
+
+  searchPanelList.innerHTML = "";
 
   movies.forEach((movie) => {
-    const src = movie.poster_path
-      ? `https://image.tmdb.org/t/p/w300${movie.poster_path}`
-      : "";
+    if (!movie.poster_path) {
+      return false;
+    }
+
+    const src = `https://image.tmdb.org/t/p/w300${movie.poster_path}`;
 
     const template = `
       <li class="flex gap-10">
@@ -42,7 +53,7 @@ const renderSearchedMovies = function (movies) {
           </a>
       </li>`;
 
-    searchResultsList.innerHTML += template;
+    searchPanelList.innerHTML += template;
   });
 };
 
