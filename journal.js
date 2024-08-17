@@ -1,5 +1,3 @@
-import { fetchSearchedMovies } from "./modules/search.js";
-
 const options = {
   method: "GET",
   headers: {
@@ -9,28 +7,7 @@ const options = {
   },
 };
 
-// search
-const searchContainer = document.querySelector(".search-container");
-const searchInput = document.querySelector(".search-input");
-const searchPanel = document.querySelector(".search-panel");
-
-document.addEventListener("click", (event) => {
-  if (!searchContainer.contains(event.target)) {
-    searchInput.value = "";
-    searchPanel.style.display = "none";
-  }
-});
-
-searchInput.addEventListener("input", function (event) {
-  if (searchInput.value) {
-    fetchSearchedMovies(options, searchInput.value);
-    searchPanel.style.display = "block";
-  } else {
-    searchPanel.style.display = "none";
-  }
-});
-
-// get ids of favorite movies from local storage
+// fetch Movie by Id
 const fetchMovieById = async (options, id) => {
   try {
     const response = await fetch(
@@ -39,30 +16,28 @@ const fetchMovieById = async (options, id) => {
     );
 
     if (!response.ok) {
-      console.error("Error fetching products", error);
-    } else {
-      const movie = await response.json();
-      renderMovie(id, movie);
+      throw new Error(`HTTP error! Status: ${response.status}`, error);
     }
+
+    const movie = await response.json();
+    return movie;
   } catch (error) {
-    console.error("Error fetching products", error);
+    console.error("Error fetching", error);
   }
 };
 
 const favorites = document.querySelector(".favorites");
 
-const renderMovie = async (id, movie) => {
-  const src = movie.poster_path
-    ? `https://image.tmdb.org/t/p/w300${movie.poster_path}`
-    : "";
+const renderMovie = async (movie) => {
+  if (!movie.poster_path) return;
 
   const template = `
-      <div class="favorite-movie flex h-64 bg-darkgrey rounded-lg p-12" data-id="${id}">
+      <div class="favorite-movie flex h-64 bg-darkblue rounded-lg p-12" data-id="${movie.id}">
           <!-- image of movie -->
           <figure class="h-full w-auto flex-shrink-0">
             <img
               class="object-cover h-full"
-              src=${src}
+              src="https://image.tmdb.org/t/p/w300${movie.poster_path}"
               alt=""
             />
           </figure>
@@ -83,17 +58,20 @@ const renderMovie = async (id, movie) => {
   favorites.innerHTML += template;
 };
 
-const renderFavorites = () => {
+const renderFavoriteMovies = () => {
   favorites.innerHTML = "";
   const ids = JSON.parse(localStorage.getItem("id")) || [];
 
   ids.forEach((id) => {
-    fetchMovieById(options, id);
+    fetchMovieById(options, id).then((movie) => {
+      renderMovie(movie);
+    });
   });
 };
 
-renderFavorites();
+renderFavoriteMovies();
 
+// delete ids of favorite movies from local storage
 favorites.addEventListener("click", (event) => {
   const clickedElement = event.target;
 

@@ -1,4 +1,4 @@
-import { fetchSearchedMovies } from "./modules/search.js";
+import { fetchSearchedMovies } from "./search.js";
 
 const options = {
   method: "GET",
@@ -66,6 +66,7 @@ const searchContainer = document.querySelector(".search-container");
 const searchInput = document.querySelector(".search-input");
 const searchPanel = document.querySelector(".search-panel");
 
+// clicked outside search container => hidden search panel
 document.addEventListener("click", (event) => {
   if (!searchContainer.contains(event.target)) {
     searchInput.value = "";
@@ -73,7 +74,7 @@ document.addEventListener("click", (event) => {
   }
 });
 
-searchInput.addEventListener("input", function (event) {
+searchInput.addEventListener("input", function () {
   if (searchInput.value) {
     fetchSearchedMovies(options, searchInput.value);
     searchPanel.style.display = "block";
