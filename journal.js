@@ -32,9 +32,9 @@ const renderMovie = async (movie) => {
   if (!movie.poster_path) return;
 
   const template = `
-      <div class="favorite-movie flex h-64 bg-darkblue rounded-lg p-12" data-id="${movie.id}">
+      <div class="favorite-movie relative flex h-64 bg-darkblue rounded-lg p-6" data-id="${movie.id}">
           <!-- image of movie -->
-          <figure class="h-full w-auto flex-shrink-0">
+          <figure class="hidden sm:block h-full w-auto flex-shrink-0">
             <img
               class="object-cover h-full"
               src="https://image.tmdb.org/t/p/w300${movie.poster_path}"
@@ -42,7 +42,7 @@ const renderMovie = async (movie) => {
             />
           </figure>
           <!-- information about film -->
-          <div class="flex flex-col gap-2 px-12 overflow-hidden">
+          <div class="flex flex-col gap-2 sm:px-12 overflow-hidden">
             <!-- title -->
             <h2 class="text-2xl text-white">${movie.title}</h2>
             <!-- description -->
@@ -51,7 +51,7 @@ const renderMovie = async (movie) => {
             </p>
           </div>
           <!-- delete icon -->
-          <div class="delete-icon w-8 h-8 flex-shrink-0 bg-delete hover:bg-deleteHover bg-cover">
+          <div class="delete-icon absolute top-3 right-3 w-8 h-8 flex-shrink-0 bg-delete hover:bg-deleteHover bg-cover">
           </div>
       </div>`;
 
